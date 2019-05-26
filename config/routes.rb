@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :backpacks do
+    resources :slots, except: :index
+  end
+  resources :items
+  root 'backpacks#index'
 end
