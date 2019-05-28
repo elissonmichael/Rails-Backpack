@@ -1,0 +1,14 @@
+sword:
+  name: Silver Sword
+  size: 2
+  weight: 3
+
+stone:
+  name: Bit Stone
+  size: 5
+  weight: 15
+
+bread:
+  name: Bread
+  size: 1
+  weight: 1
