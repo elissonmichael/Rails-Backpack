@@ -5,7 +5,7 @@ class Backpack < ApplicationRecord
   validates :capacity, :weight_limit, numericality: { greater_than: 0 }
 
   def add(item)
-    return not_enough_space unless fit?(item)
+    return if cant_fit?(item)
 
     if items.include?(item)
       slot_with(item).increase_quantity
@@ -14,8 +14,10 @@ class Backpack < ApplicationRecord
     end
   end
 
-  def fit?(item)
-    item.size <= available_capacity
+  def validates_availability_for(item)
+    return unless cant_fit?(item)
+
+    errors.add(:capacity, 'This Item Cannot Fit Into This Backpack')
   end
 
   def available_capacity
@@ -34,11 +36,11 @@ class Backpack < ApplicationRecord
 
   private
 
-  def not_enough_space
-    errors.add(:capacity, 'This Item Cannot Fit Into This Backpack')
-  end
-
   def slot_with(item)
     slots.detect { |slot| slot.item == item }
+  end
+
+  def cant_fit?(item)
+    item.size > available_capacity
   end
 end
