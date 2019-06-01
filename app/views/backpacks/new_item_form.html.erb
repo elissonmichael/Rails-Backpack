@@ -1,0 +1,13 @@
+<h1>Add Item to Backpack <%= @backpack.id %> </h1>
+<%= form_tag(controller: 'backpacks', action: 'add_item', method: 'post') do %>
+  <%= render 'validations_errors', resource: @backpack %>
+  <%= label_tag(:item_id, 'Item') %>
+  <%= select_tag(:item_id, options_from_collection_for_select(Item.all,
+                                                              :id,
+                                                              :to_s,
+                                                              params[:item_id])
+                ) %>
+  <%= submit_tag('Add Item') %>
+<% end %>
+
+<%= link_to 'Return', @backpack %>

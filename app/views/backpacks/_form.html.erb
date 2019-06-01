@@ -1,0 +1,17 @@
+<%= form_with(model: backpack, local: true) do |form| %>
+  <%= render 'validations_errors', resource: backpack %>
+
+  <div class="field">
+    <%= form.label :capacity %>
+    <%= form.number_field :capacity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight_limit %>
+    <%= form.number_field :weight_limit %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

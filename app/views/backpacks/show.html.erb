@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Backpack <%= @backpack.id %> </h1>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @backpack.capacity %>
+</p>
+
+<p>
+  <strong>Weight Limit:</strong>
+  <%= @backpack.weight_limit %>
+</p>
+
+<p>
+  <strong>Available Space:</strong>
+  <%= @backpack.available_capacity %>
+</p>
+
+<p>
+  <strong>Overweight:</strong>
+  <%= @backpack.overweight? %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @backpack.slots.each do |slot| %>
+      <tr>
+        <td><%= slot.item %></td>
+        <td><%= slot.quantity %></td>
+        <td><%= slot.size %></td>
+        <td><%= slot.weight %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Item', new_item_form_backpack_path(@backpack) %> |
+<%= link_to 'Edit', edit_backpack_path(@backpack) %> |
+<%= link_to 'Back', backpacks_path %>
