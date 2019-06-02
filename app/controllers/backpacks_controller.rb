@@ -9,7 +9,7 @@ class BackpacksController < ApplicationController
     @backpack.validates_availability_for(item)
     if @backpack.errors.empty?
       @backpack.add(item)
-      redirect_to @backpack
+      redirect_to @backpack, notice: 'Item was successfully added.'
     else
       render :new_item_form
     end
