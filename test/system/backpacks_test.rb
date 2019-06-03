@@ -35,23 +35,20 @@ class BackpacksTest < ApplicationSystemTestCase
   end
 
   test 'adding a new item' do
-    visit backpacks_url
-    click_on 'Show Items', match: :first
+    visit backpack_url(@backpack)
     add_big_stone
     assert_text 'Item was successfully added.'
   end
 
   test 'adding the same item increases its quantity' do
-    visit backpacks_url
-    click_on 'Show Items', match: :first
+    visit backpack_url(@backpack)
     2.times { add_big_stone }
     assert_selector 'td', text: '2'
   end
 
   test 'adding an item that cannot fit into the backpack' do
-    visit backpacks_url
-    click_on 'Show Items', match: :first
-    3.times { add_big_stone }
+    visit backpack_url(backpacks(:low_capacity))
+    add_big_stone
     assert_text 'This Item Cannot Fit Into This Backpack'
   end
 

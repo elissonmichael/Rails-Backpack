@@ -1,3 +1,7 @@
 default:
   capacity: 10
   weight_limit: 20
+
+low_capacity:
+  capacity: 1
+  weight_limit: 1
