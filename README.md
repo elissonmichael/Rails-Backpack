@@ -1,3 +1,5 @@
+![CI](https://github.com/elissonmichael/Rails-Backpack/workflows/CI/badge.svg?branch=master)
+
 ## Backpack
 
 This project implements a backpack system for an inventory on a game.
